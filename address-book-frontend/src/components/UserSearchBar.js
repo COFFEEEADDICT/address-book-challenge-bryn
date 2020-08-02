@@ -4,14 +4,15 @@ import { connect } from "react-redux";
 import UserInput from "../ui/userInput/UserInput";
 import UserInputDiv from "../ui/userInput/UserInputDiv";
 import { FILTER_CONTACTS_SUCCESS } from "../Redux/types";
-import { debounce } from "lodash";
+// import { debounce } from "lodash";
 
 const UserSearchBar = ({ inputChanged, userState }) => {
 	// const debounceHandleChange = debounce((text) => inputChanged(text), 300);
 
 	return (
-		<UserInputDiv>
+		<UserInputDiv className="UserInputDiv">
 			<UserInput
+				className="UserInputField"
 				placeholder="Search Contacts"
 				value={userState}
 				type="text"
@@ -33,7 +34,7 @@ const mapDispatchToProps = (dispatch) => {
 		inputChanged: (text) => {
 			const inputAction = {
 				type: FILTER_CONTACTS_SUCCESS,
-				payload: text,
+				payload: { text: text, removeFlag: true },
 			};
 			dispatch(inputAction);
 		},

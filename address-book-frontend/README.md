@@ -11,6 +11,9 @@
 
 # To remove/clear results when typing
 
+1.fixed
+2.redone search filter - used startsWith()
+
 # Use Typescript
 
 # Unsure on debounce implementation

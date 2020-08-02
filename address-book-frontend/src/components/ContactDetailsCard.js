@@ -1,7 +1,7 @@
 import React from "react";
 import SelectedCard from "../ui/contactCard/SelectedCard";
 
-export const ContactDetailsCard = ({
+const ContactDetailsCard = ({
 	details: { name, phone, address },
 	handleCloseClick,
 }) => {
@@ -11,8 +11,10 @@ export const ContactDetailsCard = ({
 				<p>Name: {name}</p>
 				<p>Phone: {phone}</p>
 				<p>Address: {address}</p>
-				<button onClick={handleCloseClick}>Close</button>
+				{/* <button onClick={handleCloseClick}>Close</button> */}
 			</SelectedCard>
 		</div>
 	);
 };
+
+export default ContactDetailsCard;
