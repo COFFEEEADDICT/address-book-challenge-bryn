@@ -8,12 +8,7 @@
 6. npm start
 
 **_ FAILS _**
-
-# To remove/clear results when typing
-
-1.fixed
-2.redone search filter - used startsWith()
-
+ 
 # Use Typescript
 
 # Unsure on debounce implementation
@@ -29,3 +24,9 @@ npm -v
 6.14.4
 
 # Bryn Heath
+
+
+**_ FIXED _**
+
+1.Fixed onChange, now removes details card
+2.Redone search filter - used startsWith()
