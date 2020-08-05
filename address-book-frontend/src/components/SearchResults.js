@@ -13,6 +13,7 @@ import { userSearchRemoveCard } from "../Redux/Actions/userInputActions";
 //filter and sort function V2.0
 function displayTopMatches(array, searchTerm) {
 	//sort array names alphabetically
+	console.log(array);
 	const sortedArray = array.sort(function (a, b) {
 		if (a.name < b.name) {
 			return -1;
@@ -42,14 +43,12 @@ function displayTopMatches(array, searchTerm) {
 function SearchResults({
 	fetchContacts,
 	apiState,
-	userState,
+	theUserSearch,
 	detailsCardFlag,
 	userSearchRemoveCard,
 }) {
-	console.log("removeFlag", detailsCardFlag);
 	// const [cardFlag, setFlag] = useState(false);
 	const [cardSelected, setCard] = useState([]);
-
 	const contactsArr = apiState.contacts.contacts;
 	//on load/refresh it will generate 500 new contacts
 	useEffect(() => {
@@ -81,10 +80,10 @@ function SearchResults({
 					// handleCloseClick={clickToCloseCardDetails}
 				/>
 			)}
-			{userState &&
+			{theUserSearch &&
 				apiState.contacts &&
-				(displayTopMatches(contactsArr, userState).length >= 1 ? (
-					displayTopMatches(contactsArr, userState).map((contact) => (
+				(displayTopMatches(contactsArr, theUserSearch).length >= 1 ? (
+					displayTopMatches(contactsArr, theUserSearch).map((contact) => (
 						<ResultNameCard
 							//key could be better
 							key={contact.phone}
@@ -106,7 +105,7 @@ function SearchResults({
 
 const mapStateToProps = (state) => {
 	return {
-		userState: state.user.userSearch,
+		theUserSearch: state.user.userSearch,
 		detailsCardFlag: state.user.removeFlag,
 		apiState: state.api,
 	};

@@ -8,19 +8,36 @@
 
 // @ts-ignore
 
-describe("focus input", () => {
-	it("focuses on input load", () => {
-		cy.visit("http://localhost:3000");
-
-		cy.focused()
-			.should("have.class", "sc-AxjAm hmBuEQ UserInputField")
-			.should("be.visible");
+describe("normal run through test", () => {
+	beforeEach(() => {
+		cy.visit("/");
 	});
-	it.only("accepts input", () => {
-		const typedText = "r";
-		cy.visit("http://localhost:3000");
 
-		cy.get('input[name="userSearchInput"]').type(typedText);
-		// .should("have.value", typedText);
+	// standard input search and 5 results come up
+	it("accepts input", () => {
+		const typedText = "r";
+		cy.get('input[name="userSearchInput"]')
+			.should("have.class", "sc-AxjAm hmBuEQ UserInputField")
+			.should("be.visible")
+			.type(typedText)
+			.should("have.value", typedText);
+
+		cy.get(".sc-AxhCb")
+			.should("have.length", 5)
+			.contains("r", { matchCase: false });
+	});
+
+	// when search fails - due to name / contact not existing in db
+	it("fails on incorrect name", () => {
+		const typedText = "zzz";
+		cy.get('input[name="userSearchInput"]')
+			.should("have.class", "sc-AxjAm hmBuEQ UserInputField")
+			.should("be.visible")
+			.type(typedText)
+			.should("have.value", typedText);
+
+		cy.get(".sc-AxhUy")
+			.should("have.length", 1)
+			.should("contain", "no contacts found");
 	});
 });
