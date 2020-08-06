@@ -13,7 +13,7 @@ import { userSearchRemoveCard } from "../Redux/Actions/userInputActions";
 //filter and sort function V2.0
 function displayTopMatches(array, searchTerm) {
 	//sort array names alphabetically
-	console.log(array);
+
 	const sortedArray = array.sort(function (a, b) {
 		if (a.name < b.name) {
 			return -1;

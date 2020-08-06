@@ -13,7 +13,7 @@ describe("normal run through test", () => {
 		cy.visit("/");
 	});
 
-	// standard input search and 5 results come up
+	// standard e2e -- input search and 5 results come up
 	it("accepts input", () => {
 		const typedText = "r";
 		cy.get('input[name="userSearchInput"]')
@@ -27,7 +27,7 @@ describe("normal run through test", () => {
 			.contains("r", { matchCase: false });
 	});
 
-	// when search fails - due to name / contact not existing in db
+	// test for failing search -- when search fails due to name / contact not existing in db
 	it("fails on incorrect name", () => {
 		const typedText = "zzz";
 		cy.get('input[name="userSearchInput"]')
