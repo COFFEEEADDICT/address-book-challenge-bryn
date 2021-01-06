@@ -4,7 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"awesome-debounce-promise": "^2.1.0",
-		"axios": "^0.19.2",
+		"axios": "^0.21.1",
 		"cypress": "^4.11.0",
 		"lodash": "^4.17.19",
 		"react": "^16.13.1",
